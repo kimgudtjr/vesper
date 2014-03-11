@@ -1,0 +1,57 @@
+#
+# sources 
+#
+
+#TARGETNAME=hama
+TARGETTYPE=DRIVER
+DRIVERBASE=0x00400000
+					  
+!IF ("$(DDKBUILDENV)" == "chk" || "$(DDKBUILDENV)" == "checked")
+TARGETLIBS=\
+	$(DDK_LIB_PATH)\ntstrsafe.lib
+!ELSE
+TARGETLIBS=\
+	$(DDK_LIB_PATH)\ntstrsafe.lib	
+!ENDIF
+
+
+# 추가 참조 디렉토리 
+#
+INCLUDES=.\;..\share;
+
+MSC_WARNING_LEVEL=/W4
+
+!if !defined(DDK_TARGET_OS) || "$(DDK_TARGET_OS)"=="Win2K"
+C_DEFINES=$(C_DEFINES) -DWIN2K
+
+# ExAllocateFromPagedLookasideList() 함수를 win2k 에서 사용하려면 
+# 추가해야함
+#
+C_DEFINES=$(C_DEFINES) -D_WIN2K_COMPAT_SLIST_USAGE
+!endif
+
+LINKER_FLAGS=$(LINKER_FLAGS) -MAP
+
+PRECOMPILED_INCLUDE=DriverHeaders.h
+PRECOMPILED_PCH=DriverHeaders.pch
+PRECOMPILED_OBJ=DriverHeaders.obj
+
+
+#
+# setup visualC++ source browsing
+#
+#BROWSER_INFO=1
+BSCMAKE_FLAGS=$(BSCMAKE_FLAGS) -n
+
+SOURCES=\
+	DriverEntry.cpp	\
+	DriverDebug.cpp \
+	fc_drv_util.cpp \
+	asm_function.cpp \
+	vesper_support.cpp
+
+I386_SOURCES=\
+	x86.asm
+
+AMD64_SOURCES=\
+	x64.asm

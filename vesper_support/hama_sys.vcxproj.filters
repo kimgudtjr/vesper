@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="DriverDebug.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DriverEntry.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="fc_drv_util.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="asm_function.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="vesper_support.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="asm_function.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="arch.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DriverDebug.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="DriverHeaders.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="fc_drv_util.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\share\fc_drv_ioctl.h">
+      <Filter>share</Filter>
+    </ClInclude>
+    <ClInclude Include="..\share\fc_drv_share.h">
+      <Filter>share</Filter>
+    </ClInclude>
+    <ClInclude Include="vesper_support.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="amd64\x64.asm">
+      <Filter>sources_asm</Filter>
+    </None>
+    <None Include="i386\x86.asm">
+      <Filter>sources_asm</Filter>
+    </None>
+    <None Include="ddkbuild.bat">
+      <Filter>build</Filter>
+    </None>
+    <None Include="SOURCES">
+      <Filter>build</Filter>
+    </None>
+    <None Include="labdrv.build.bat">
+      <Filter>build</Filter>
+    </None>
+    <None Include="MAKEFILE">
+      <Filter>build</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="sources">
+      <UniqueIdentifier>{bd01c39f-9b85-435f-a6f6-96d08e069897}</UniqueIdentifier>
+      <Extensions>cpp</Extensions>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{5d604406-b4fd-4ec0-a7ce-fb382833855d}</UniqueIdentifier>
+      <Extensions>h</Extensions>
+    </Filter>
+    <Filter Include="sources_asm">
+      <UniqueIdentifier>{03641588-326f-41ab-a864-6e3e85bf7f59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="build">
+      <UniqueIdentifier>{a9100a9f-f054-43a7-8db0-e2339987b5a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="share">
+      <UniqueIdentifier>{5868b7dd-6f5b-432c-8352-cb06723ff949}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="amd64\x64.asm" />
+    <None Include="ddkbuild.bat" />
+    <None Include="i386\x86.asm" />
+    <None Include="labdrv.build.bat" />
+    <None Include="MAKEFILE" />
+    <None Include="SOURCES" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="asm_function.cpp" />
+    <ClCompile Include="DriverDebug.cpp" />
+    <ClCompile Include="DriverEntry.cpp" />
+    <ClCompile Include="fc_drv_util.cpp" />
+    <ClCompile Include="vesper_support.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\share\fc_drv_ioctl.h" />
+    <ClInclude Include="..\share\fc_drv_share.h" />
+    <ClInclude Include="asm_function.h" />
+    <ClInclude Include="DriverDebug.h" />
+    <ClInclude Include="DriverHeaders.h" />
+    <ClInclude Include="fc_drv_util.h" />
+    <ClInclude Include="arch.h" />
+    <ClInclude Include="vesper_support.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FE25DD79-4293-416C-8EDC-59FB385D9546}</ProjectGuid>
+    <Keyword>MakeFileProj</Keyword>
+    <ProjectName>vesper_support</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeBuildCommandLine>labdrv.build.bat x86 checked</NMakeBuildCommandLine>
+    <NMakeOutput>afc_drv.exe</NMakeOutput>
+    <NMakeCleanCommandLine>labdrv.build.bat clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>labdrv.build.bat clean &amp;&amp; labdrv.build.bat x86 checked</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>c:\WinDDK\7600.16385.1\inc\ddk\;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <NMakeBuildCommandLine>labdrv.build.bat x64 checked</NMakeBuildCommandLine>
+    <NMakeOutput>afc_drv.exe</NMakeOutput>
+    <NMakeCleanCommandLine>labdrv.build.bat clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>labdrv.build.bat clean &amp;&amp; labdrv.build.bat x64 checked</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;_DEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>c:\WinDDK\7600.16385.1\inc\ddk;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeBuildCommandLine>labdrv.build.bat x86 free</NMakeBuildCommandLine>
+    <NMakeOutput>afc_drv.exe</NMakeOutput>
+    <NMakeCleanCommandLine>labdrv.build.bat clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>labdrv.build.bat clean &amp;&amp; labdrv.build.bat x86 free</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>c:\WinDDK\7600.16385.1\inc\ddk;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NMakeBuildCommandLine>labdrv.build.bat x64 free</NMakeBuildCommandLine>
+    <NMakeOutput>afc_drv.exe</NMakeOutput>
+    <NMakeCleanCommandLine>labdrv.build.bat clean</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>labdrv.build.bat clean &amp;&amp; labdrv.build.bat x64 free</NMakeReBuildCommandLine>
+    <NMakePreprocessorDefinitions>WIN32;NDEBUG;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <IncludePath>c:\WinDDK\7600.16385.1\inc\ddk;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
