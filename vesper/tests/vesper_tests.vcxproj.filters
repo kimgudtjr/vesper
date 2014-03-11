@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="vesper_tests.cpp" />
+    <ClCompile Include="..\..\..\..\work.libs\_MyLib\Win32Utils.cpp">
+      <Filter>_MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\branch_log.cpp">
+      <Filter>vesper</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sqlite3\CppSQLite3.cpp">
+      <Filter>vesper\sqlite3</Filter>
+    </ClCompile>
+    <ClCompile Include="..\sqlite3\sqlite3.c">
+      <Filter>vesper\sqlite3</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="..\..\..\..\work.libs\_MyLib\Win32Utils.h">
+      <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.libs\_MyLib\mini_test.h">
+      <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\branch_log.h">
+      <Filter>vesper</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sqlite3\CppSQLite3.h">
+      <Filter>vesper\sqlite3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sqlite3\sqlite3.h">
+      <Filter>vesper\sqlite3</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="_MyLib">
+      <UniqueIdentifier>{4db32520-0a33-4635-affe-6d09f054b4cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vesper">
+      <UniqueIdentifier>{0a6f5b34-aa66-4a39-9a4e-61b4b26c5461}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="vesper\sqlite3">
+      <UniqueIdentifier>{e7c54c58-f62a-4ff7-a64d-fe0b88d9c707}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\work.libs\_MyLib\Win32Utils.cpp">
+      <Filter>_MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="breakpoint.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\work.libs\_MyLib\scm_context.cpp">
+      <Filter>_MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite3\CppSQLite3.cpp">
+      <Filter>sqlite3</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite3\sqlite3.c">
+      <Filter>sqlite3</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu_helper.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="debug_core.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="debugger.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="branch_log.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\work.libs\_slogger\slogger.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.libs\_MyLib\Win32Utils.h">
+      <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.libs\_MyLib\arch.h">
+      <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="breakpoint.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.libs\_MyLib\scm_context.h">
+      <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="vesper_support.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\distorm3\include\distorm.h">
+      <Filter>distorm3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\distorm3\include\mnemonics.h">
+      <Filter>distorm3</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite3\CppSQLite3.h">
+      <Filter>sqlite3</Filter>
+    </ClInclude>
+    <ClInclude Include="sqlite3\sqlite3.h">
+      <Filter>sqlite3</Filter>
+    </ClInclude>
+    <ClInclude Include="cpu_helper.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="debug_core.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="debugger.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="branch_log.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="sources">
+      <UniqueIdentifier>{b2788edd-1471-4f55-a4eb-e832937390ec}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="headers">
+      <UniqueIdentifier>{40a34edf-58eb-4673-89a0-157518f36731}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="_MyLib">
+      <UniqueIdentifier>{8d7c9460-adab-47f2-a02d-20b39939d4c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="distorm3">
+      <UniqueIdentifier>{1db7cdc6-eeba-4cb7-80fc-5003a7a4fb71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="sqlite3">
+      <UniqueIdentifier>{83aad20e-32af-478d-afe0-552f85fae782}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

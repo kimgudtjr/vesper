@@ -1,0 +1,5 @@
+# version
+SQLite 3.8.3.1
+
+# cpp wrapper
+http://www.codeproject.com/Articles/6343/CppSQLite-C-Wrapper-for-SQLite
