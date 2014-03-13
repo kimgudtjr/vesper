@@ -19,7 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\work.libs\_MyLib\Win32Utils.cpp" />
+    <ClCompile Include="..\..\..\..\_MyLib\trunk\Win32Utils.cpp" />
     <ClCompile Include="..\branch_log.cpp" />
     <ClCompile Include="..\sqlite3\CppSQLite3.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -42,8 +42,8 @@
     <ClCompile Include="vesper_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\work.libs\_MyLib\mini_test.h" />
-    <ClInclude Include="..\..\..\..\work.libs\_MyLib\Win32Utils.h" />
+    <ClInclude Include="..\..\..\..\_MyLib\trunk\mini_test.h" />
+    <ClInclude Include="..\..\..\..\_MyLib\trunk\Win32Utils.h" />
     <ClInclude Include="..\branch_log.h" />
     <ClInclude Include="..\sqlite3\CppSQLite3.h" />
     <ClInclude Include="..\sqlite3\sqlite3.h" />
@@ -95,15 +95,23 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\..\build\x86_debug\</OutDir>
+    <IntDir>.\x86\debug\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <OutDir>..\..\..\build\x64_debug\</OutDir>
+    <IntDir>.\x64\debug\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\build\x86_release\</OutDir>
+    <IntDir>.\x86\release\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
+    <OutDir>..\..\..\build\x64_release\</OutDir>
+    <IntDir>.\x64\release\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -111,12 +119,21 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>/I "d:\work.libs\_MyLib" /I "c:\Boost_x86\include\boost-1_55" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/I "d:\work.git\_MyLib\trunk"
+/I "d:\work.git\_slogger\trunk"
+/I "c:\Boost_x86\include\boost-1_55"
+/I "..\..\distorm3\include"
+/I "..\dbghelp\inc"
+/I "..\sqlite3"
+/I "..\" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>/LIBPATH:"c:\Boost_x86\lib" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/LIBPATH:"c:\Boost_x86\lib"
+/LIBPATH:"..\..\distorm3\x86_dll" distorm3.lib
+/LIBPATH:".\dbghelp\lib\i386" dbghelp.lib
+d:\work.git\_slogger\build\x86_debug\slogger.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -125,22 +142,22 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>/D "_AMD64_" 
-/I "d:\work.libs\_MyLib" 
-/I "d:\work.libs\_slogger" 
-/I "c:\Boost_x64\include\boost-1_55" 
-/I "..\..\distorm3\include" 
-/I "..\dbghelp\inc" 
-/I "..\sqlite3" 
+      <AdditionalOptions>/D "_AMD64_"
+/I "d:\work.git\_MyLib\trunk"
+/I "d:\work.git\_slogger\trunk"
+/I "c:\Boost_x64\include\boost-1_55"
+/I "..\..\distorm3\include"
+/I "..\dbghelp\inc"
+/I "..\sqlite3"
 /I "..\"</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>/LIBPATH:"c:\Boost_x64\lib" 
-/LIBPATH:$(OutDir) distorm3.lib 
+      <AdditionalOptions>/LIBPATH:"c:\Boost_x64\lib"
+/LIBPATH:"..\..\distorm3\x64_dll" distorm3.lib
 /LIBPATH:".\dbghelp\lib\amd64" dbghelp.lib
-d:\work.libs\_slogger\bin_x64\slogger_x64d.lib %(AdditionalOptions)</AdditionalOptions>
+d:\work.git\_slogger\build\x64_debug\slogger.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -151,14 +168,23 @@ d:\work.libs\_slogger\bin_x64\slogger_x64d.lib %(AdditionalOptions)</AdditionalO
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>/I "d:\work.libs\_MyLib" /I "c:\Boost_x86\include\boost-1_55" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/I "d:\work.git\_MyLib\trunk"
+/I "d:\work.git\_slogger\trunk"
+/I "c:\Boost_x86\include\boost-1_55"
+/I "..\..\distorm3\include"
+/I "..\dbghelp\inc"
+/I "..\sqlite3"
+/I "..\" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalOptions>/LIBPATH:"c:\Boost_x86\lib" %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>/LIBPATH:"c:\Boost_x86\lib"
+/LIBPATH:"..\..\distorm3\x86_dll" distorm3.lib
+/LIBPATH:".\dbghelp\lib\i386" dbghelp.lib
+d:\work.git\_slogger\build\x86_release\slogger.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -169,13 +195,13 @@ d:\work.libs\_slogger\bin_x64\slogger_x64d.lib %(AdditionalOptions)</AdditionalO
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalOptions>/D "_AMD64_" 
-/I "d:\work.libs\_MyLib" 
-/I "d:\work.libs\_slogger" 
-/I "c:\Boost_x64\include\boost-1_55" 
-/I "..\..\distorm3\include" 
-/I "..\dbghelp\inc" 
-/I "..\sqlite3" 
+      <AdditionalOptions>/D "_AMD64_"
+/I "d:\work.git\_MyLib\trunk"
+/I "d:\work.git\_slogger\trunk"
+/I "c:\Boost_x64\include\boost-1_55"
+/I "..\..\distorm3\include"
+/I "..\dbghelp\inc"
+/I "..\sqlite3"
 /I "..\"</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -183,10 +209,10 @@ d:\work.libs\_slogger\bin_x64\slogger_x64d.lib %(AdditionalOptions)</AdditionalO
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalOptions>/LIBPATH:"c:\Boost_x64\lib" 
-/LIBPATH:$(OutDir) distorm3.lib 
+      <AdditionalOptions>/LIBPATH:"c:\Boost_x64\lib"
+/LIBPATH:"..\..\distorm3\x64_dll" distorm3.lib
 /LIBPATH:".\dbghelp\lib\amd64" dbghelp.lib
-d:\work.libs\_slogger\bin_x64\slogger_x64.lib %(AdditionalOptions)</AdditionalOptions>
+d:\work.git\_slogger\build\x64_release\slogger.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -69,10 +69,10 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
     <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='clib|Win32'">$(Configuration)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='clib|x64'">$(Platform)\$(Configuration)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='dll|Win32'">$(Configuration)\</IntDir>
-    <IntDir Condition="'$(Configuration)|$(Platform)'=='dll|x64'">$(Platform)\$(Configuration)\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='clib|Win32'">.\x86\clib\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='clib|x64'">.\x64\clib\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='dll|Win32'">.\x86\dll\</IntDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='dll|x64'">.\x64\dll\</IntDir>
     <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='clib|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
     <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='clib|Win32'" />
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='clib|Win32'" />
@@ -87,10 +87,10 @@
     <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='dll|x64'" />
     <TargetName Condition="'$(Configuration)|$(Platform)'=='dll|Win32'">distorm3</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='dll|x64'">distorm3</TargetName>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='dll|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='dll|Win32'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='clib|Win32'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
-    <OutDir Condition="'$(Configuration)|$(Platform)'=='clib|x64'">$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='dll|x64'">..\..\x64_dll\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='dll|Win32'">..\..\x86_dll\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='clib|Win32'">..\..\x86_lib\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='clib|x64'">..\..\x64_lib\</OutDir>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='clib|Win32'">distorm</TargetName>
     <TargetName Condition="'$(Configuration)|$(Platform)'=='clib|x64'">distorm</TargetName>
   </PropertyGroup>
@@ -117,6 +117,7 @@
     </ClCompile>
     <Lib>
       <TargetMachine>MachineX86</TargetMachine>
+      <OutputFile>$(OutDir)distorm3.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='clib|x64'">
@@ -147,6 +148,7 @@
     </ClCompile>
     <Lib>
       <TargetMachine>MachineX64</TargetMachine>
+      <OutputFile>$(OutDir)distorm3.lib</OutputFile>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='dll|Win32'">
@@ -174,6 +176,9 @@
     <Link />
     <ProjectReference />
     <Link />
+    <Link>
+      <OutputFile>$(OutDir)distorm3.dll</OutputFile>
+    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='dll|x64'">
     <Midl>
@@ -204,6 +209,7 @@
       <TargetMachine>MachineX64</TargetMachine>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
+      <OutputFile>$(OutDir)distorm3.dll</OutputFile>
     </Link>
     <ProjectReference />
   </ItemDefinitionGroup>

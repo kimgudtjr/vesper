@@ -3,9 +3,6 @@
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
     <ClCompile Include="vesper_tests.cpp" />
-    <ClCompile Include="..\..\..\..\work.libs\_MyLib\Win32Utils.cpp">
-      <Filter>_MyLib</Filter>
-    </ClCompile>
     <ClCompile Include="..\branch_log.cpp">
       <Filter>vesper</Filter>
     </ClCompile>
@@ -15,15 +12,12 @@
     <ClCompile Include="..\sqlite3\sqlite3.c">
       <Filter>vesper\sqlite3</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\_MyLib\trunk\Win32Utils.cpp">
+      <Filter>_MyLib</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="..\..\..\..\work.libs\_MyLib\Win32Utils.h">
-      <Filter>_MyLib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\work.libs\_MyLib\mini_test.h">
-      <Filter>_MyLib</Filter>
-    </ClInclude>
     <ClInclude Include="..\branch_log.h">
       <Filter>vesper</Filter>
     </ClInclude>
@@ -32,6 +26,12 @@
     </ClInclude>
     <ClInclude Include="..\sqlite3\sqlite3.h">
       <Filter>vesper\sqlite3</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\_MyLib\trunk\mini_test.h">
+      <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\_MyLib\trunk\Win32Utils.h">
+      <Filter>_MyLib</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

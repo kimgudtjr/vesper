@@ -13,7 +13,7 @@ rem ============================================================================
 
 set DDKBUILD=.\ddkbuild.bat
 set _proj_dir=.
-set _target_name=vesper
+set _target_name=vesperk
 
 rem SOURCES 파일에서 사용 할 TARGETNAME 변수를 설정
 rem 
@@ -37,9 +37,10 @@ if /i "%1"=="clean" (
 	echo          clean x86 checked
 	echo ----------------------------------
     set _target_platform=x86
-	set _output_directory=..\bin_x86
+	set _output_directory=..\..\build\x86_debug
 	set _target_config=-WIN7XP checked
 	set _target_path=%_proj_dir%\objchk_wxp_x86\i386\%_target_name%.sys
+	set _target_pdb=%_proj_dir%\objchk_wxp_x86\i386\%_target_name%.pdb
 	set _target_dir=%_proj_dir%\objchk_wxp_x86
     set _log_file=%_proj_dir%\buildchk_wxp_x86
     call :_dump_environment_variables
@@ -49,9 +50,10 @@ if /i "%1"=="clean" (
 	echo          clean x86 free
 	echo ----------------------------------
 	set _target_platform=x86
-	set _output_directory=..\bin_x86
+	set _output_directory=..\..\build\x86_release
 	set _target_config=-WIN7XP free
 	set _target_path=%_proj_dir%\objfre_wxp_x86\i386\%_target_name%.sys
+	set _target_pdb=%_proj_dir%\objfre_wxp_x86\i386\%_target_name%.pdb
 	set _target_dir=%_proj_dir%\objfre_wxp_x86
     set _log_file=%_proj_dir%\buildfre_wxp_x86
     call :_dump_environment_variables
@@ -61,9 +63,10 @@ if /i "%1"=="clean" (
 	echo          clean x64 checked
 	echo ----------------------------------
 	set _target_platform=x64
-	set _output_directory=..\bin_x64
+	set _output_directory=..\..\build\x64_debug
 	set _target_config=-WIN7NETA64 checked
 	set _target_path=%_proj_dir%\objchk_wnet_amd64\amd64\%_target_name%.sys
+	set _target_pdb=%_proj_dir%\objchk_wnet_amd64\amd64\%_target_name%.pdb
 	set _target_dir=%_proj_dir%\objchk_wnet_amd64
     set _log_file=%_proj_dir%\buildchk_wnet_amd64
 	call :_dump_environment_variables
@@ -73,9 +76,10 @@ if /i "%1"=="clean" (
 	echo          clean x64 free
 	echo ----------------------------------
 	set _target_platform=x64
-	set _output_directory=..\bin_x64
+	set _output_directory=..\..\build\x86_release
 	set _target_config=-WIN7NETA64 checked
 	set _target_path=%_proj_dir%\objfre_wnet_amd64\amd64\%_target_name%.sys
+	set _target_pdb=%_proj_dir%\objfre_wnet_amd64\amd64\%_target_name%.pdb
 	set _target_dir=%_proj_dir%\objfre_wnet_amd64
     set _log_file=%_proj_dir%\buildfre_wnet_amd64
 	call :_dump_environment_variables
@@ -84,21 +88,24 @@ if /i "%1"=="clean" (
 	goto :eof
 ) else if /i "%1" == "x86" (
 	set _target_platform=x86
-	set _output_directory=..\bin_x86
 
 	if /i "%2" == "checked"		(
         echo ----------------------------------
         echo          build x86 checked
         echo ----------------------------------
+		set _output_directory=..\..\build\x86_debug
 		set _target_config=-WIN7XP checked
 		set _target_path=%_proj_dir%\objchk_wxp_x86\i386\%_target_name%.sys
+		set _target_pdb=%_proj_dir%\objchk_wxp_x86\i386\%_target_name%.pdb
 		set _target_dir=%_proj_dir%\objchk_wxp_x86
 	) else if /i "%2" == "free" (
         echo ----------------------------------
         echo          build x86 free
         echo ----------------------------------
+		set _output_directory=..\..\build\x86_release
 		set _target_config=-WIN7XP free
 		set _target_path=%_proj_dir%\objfre_wxp_x86\i386\%_target_name%.sys
+		set _target_pdb=%_proj_dir%\objfre_wxp_x86\i386\%_target_name%.pdb
 		set _target_dir=%_proj_dir%\objfre_wxp_x86
 	) else (
 		echo invalid parameter. 2nd param = %2
@@ -106,21 +113,24 @@ if /i "%1"=="clean" (
 	)
 ) else if /i "%1%" == "x64" (
 	set _target_platform=x64
-	set _output_directory=..\bin_x64
-
+	
 	if /i "%2" == "checked"		(
         echo ----------------------------------
         echo          build x64 checked
         echo ----------------------------------
+		set _output_directory=..\..\build\x64_debug
 		set _target_config=-WIN7NETA64 checked
 		set _target_path=%_proj_dir%\objchk_wnet_amd64\amd64\%_target_name%.sys
+		set _target_pdb=%_proj_dir%\objchk_wnet_amd64\amd64\%_target_name%.pdb
 		set _target_dir=%_proj_dir%\objchk_wnet_amd64
 	) else if /i "%2" == "free" (
         echo ----------------------------------
         echo          build x64 free
         echo ----------------------------------
+		set _output_directory=..\..\build\x64_release
 		set _target_config=-WIN7NETA64 free
 		set _target_path=%_proj_dir%\objfre_wnet_amd64\amd64\%_target_name%.sys
+		set _target_pdb=%_proj_dir%\objfre_wnet_amd64\amd64\%_target_name%.pdb
 		set _target_dir=%_proj_dir%\objfre_wnet_amd64
 	) else (
 		echo  invalid parameter. 2nd param = %2
@@ -148,9 +158,12 @@ call %DDKBUILD% -verbose %_target_config% %_proj_dir% -cZ
 echo [*] copy driver files [ %_target_path% ] to [ %_output_directory% ]
 copy "%_target_path%" "%_output_directory%"
 
-echo [*] copy driver files to debug target
-copy /Y "%_target_path%" v:
-goto :EOF
+echo [*] copy driver pdb files [ %_target_pdb% ] to [ %_output_directory% ]
+copy "%_target_pdb%" "%_output_directory%"
+
+rem echo [*] copy driver files to debug target
+rem copy /Y "%_target_path%" v:
+rem goto :EOF
 
 
 rem -----------------------------------------------------------------------------

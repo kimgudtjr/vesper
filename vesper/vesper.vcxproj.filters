@@ -7,14 +7,8 @@
     <ClCompile Include="stdafx.cpp">
       <Filter>sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\work.libs\_MyLib\Win32Utils.cpp">
-      <Filter>_MyLib</Filter>
-    </ClCompile>
     <ClCompile Include="breakpoint.cpp">
       <Filter>sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\work.libs\_MyLib\scm_context.cpp">
-      <Filter>_MyLib</Filter>
     </ClCompile>
     <ClCompile Include="sqlite3\CppSQLite3.cpp">
       <Filter>sqlite3</Filter>
@@ -34,28 +28,22 @@
     <ClCompile Include="branch_log.cpp">
       <Filter>sources</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\scm_context.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\Win32Utils.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\work.libs\_slogger\slogger.h">
-      <Filter>headers</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\work.libs\_MyLib\Win32Utils.h">
-      <Filter>_MyLib</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\work.libs\_MyLib\arch.h">
-      <Filter>_MyLib</Filter>
-    </ClInclude>
     <ClInclude Include="breakpoint.h">
       <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\work.libs\_MyLib\scm_context.h">
-      <Filter>_MyLib</Filter>
     </ClInclude>
     <ClInclude Include="vesper_support.h">
       <Filter>headers</Filter>
@@ -82,6 +70,18 @@
       <Filter>headers</Filter>
     </ClInclude>
     <ClInclude Include="branch_log.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.git\_MyLib\Trunk\arch.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.git\_MyLib\Trunk\scm_context.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.git\_MyLib\Trunk\Win32Utils.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.git\_slogger\Trunk\slogger.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>
