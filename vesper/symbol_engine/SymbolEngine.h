@@ -61,6 +61,8 @@
 //   * Receiving troubleshooting and status messages from DbgHelp.dll
 //
 
+typedef std::basic_string<TCHAR>  TString;
+
 class CSymbolEngine
 {
 public:
@@ -257,7 +259,7 @@ public:
 	// Note: The default values of the parameters are for the case when the call stack 
 	// of the current thread is walked.
 	//
-	bool StackWalk( FrameColl_t& Frames, int FramesToSkip = 1, HANDLE hThread = GetCurrentThread(), CONTEXT* pContext = 0 );
+//	bool StackWalk( FrameColl_t& Frames, int FramesToSkip = 1, HANDLE hThread = GetCurrentThread(), CONTEXT* pContext = 0 );
 
 
 	// Option control operations (see SymGetOptions and SymSetOptions 

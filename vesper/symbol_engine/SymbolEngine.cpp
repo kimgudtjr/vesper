@@ -400,7 +400,7 @@ bool CSymbolEngine::FindLineByAddress( DWORD64 Address, TString& File, DWORD& Li
 ///////////////////////////////////////////////////////////////////////////////
 // CSymbolEngine - stack walking operations
 //
-
+/*
 	// Turn off optimizations to make sure that frame pointer is present 
 #pragma optimize ( "", off )
 
@@ -550,7 +550,7 @@ bool CSymbolEngine::StackWalk( CSymbolEngine::FrameColl_t& Frames, int FramesToS
 
 	// Turn the optimizations on again
 #pragma optimize ( "", on )
-
+*/
 
 ///////////////////////////////////////////////////////////////////////////////
 // CSymbolEngine - option control operations

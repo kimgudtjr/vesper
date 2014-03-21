@@ -28,17 +28,17 @@
     <ClCompile Include="branch_log.cpp">
       <Filter>sources</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\scm_context.cpp">
-      <Filter>sources</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\Win32Utils.cpp">
-      <Filter>sources</Filter>
-    </ClCompile>
     <ClCompile Include="symbol_engine\SymbolEngine.cpp">
       <Filter>symbol_engine</Filter>
     </ClCompile>
     <ClCompile Include="analyzer.cpp">
       <Filter>sources</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\scm_context.cpp">
+      <Filter>_MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\Win32Utils.cpp">
+      <Filter>_MyLib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -78,15 +78,6 @@
     <ClInclude Include="branch_log.h">
       <Filter>headers</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\work.git\_MyLib\Trunk\arch.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\work.git\_MyLib\Trunk\scm_context.h">
-      <Filter>headers</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\work.git\_MyLib\Trunk\Win32Utils.h">
-      <Filter>headers</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\work.git\_slogger\Trunk\slogger.h">
       <Filter>headers</Filter>
     </ClInclude>
@@ -94,6 +85,18 @@
       <Filter>symbol_engine</Filter>
     </ClInclude>
     <ClInclude Include="analyzer.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.git\_MyLib\Trunk\Win32Utils.h">
+      <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.git\_MyLib\Trunk\arch.h">
+      <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\work.git\_MyLib\Trunk\scm_context.h">
+      <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="branch_log_data.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

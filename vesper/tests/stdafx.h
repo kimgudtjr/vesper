@@ -46,5 +46,9 @@
 	#error !!unsupported architecture!!
 #endif		
 
+//> for dbghelp 
+#define DBGHELP_TRANSLATE_TCHAR
+#include "dbghelp.h"
+
 
 #define _test_define_

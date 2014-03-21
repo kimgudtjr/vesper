@@ -29,10 +29,10 @@ public:
 	bool	log_module_load(_In_ std::wstring& module_path, _In_ UINT_PTR base_addr);
 	INT64	get_last_row_id();
 
-	const wchar_t* get_db_path() { return _path.c_str(); }
+	const wchar_t* get_db_path() { return _db_path.c_str(); }
 private:
 	bool			_initialized;
-	std::wstring	_path;
+	std::wstring	_db_path;
 	CppSQLite3DB	_db;
 	
 

@@ -19,7 +19,7 @@ class TestAnalyzer: public testing::Test
 protected: 
 	virtual void SetUp() 
 	{		
-		ASSERT_TRUE(_analyzer.initialize());
+		ASSERT_TRUE(_analyzer.initialize(L"d:\\work.git\\vesper\\build\\x64_debug\\20140221_165811.db"));
 	}
 
 	virtual void TearDown() 
@@ -35,8 +35,8 @@ protected:
 /**
  * @brief	
 **/
-TEST_F(TestAnalyzer, test)
+TEST_F(TestAnalyzer, load_module_symbols)
 {
-	
+	ASSERT_EQ(true, _analyzer.load_module_symbols());
 }
 

@@ -36,8 +36,8 @@ int _tmain(int argc, _TCHAR* argv[])
 	get_current_module_path(log_file);
 	log_file += L".log";
 		
-	//if (true != slog_initialize(slog_debug, log_to_file | log_to_con, log_file.c_str()))
-	if (true != slog_initialize(slog_debug, log_to_file, log_file.c_str()))
+	if (true != slog_initialize(slog_debug, log_to_file | log_to_con, log_file.c_str()))
+	//if (true != slog_initialize(slog_debug, log_to_file, log_file.c_str()))
 	{
 		log_err L"slog_initialize( file = %s )", log_file.c_str() log_end
 		return -1;

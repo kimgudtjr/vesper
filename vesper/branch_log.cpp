@@ -9,63 +9,7 @@
 **---------------------------------------------------------------------------*/
 #include "stdafx.h"
 #include "branch_log.h"
-
-#define CREATE_LBR_TABLE \
-	"create table lbr ( "\
-	"	idx               INTEGER PRIMARY KEY AUTOINCREMENT, "\
-	"   tid               INTEGER NOT NULL, "\
-	"	first_chance      CHAR NOT NULL DEFAULT 'y',  "\
-	"	exception_code    INTEGER NOT NULL,  "\
-	"	exception_flag    INTEGER NOT NULL, "\
-	"	exception_addr    TEXT NOT NULL, "\
-	"	number_parameters INTEGER NOT NULL, "\
-	"	exception_info_1  INTEGER, "\
-	"	exception_info_2  INTEGER, "\
-	"	exception_info_3  INTEGER, "\
-	"	exception_info_4  INTEGER, "\
-	"	buffer			  TEXT "\
-	"	) "
-
-#define INSERT_LBR \
-	"INSERT INTO lbr  "\
-	"( "\
-	"    tid, "\
-	"    first_chance, "\
-	"    exception_code, "\
-	"    exception_flag, "\
-	"    exception_addr, "\
-	"    number_parameters, "\
-	"    exception_info_1, "\
-	"    exception_info_2, "\
-	"    exception_info_3, "\
-	"    exception_info_4, "\
-	"    buffer "\
-	")  "\
-	"VALUES "\
-	"( "\
-	"    %u, "\
-	"    '%c',  "\
-	"    %u,  "\
-	"    %u, "\
-	"    '%I64u', "\
-	"    %u, "\
-	"    %u, "\
-	"    %u, "\
-	"    %u, "\
-	"    %u, "\
-	"    '%s' "\
-	") "
-
-#define CREATE_MODULE_TABLE \
-	"create table module ( "\
-	"  idx               INTEGER PRIMARY KEY AUTOINCREMENT, "\
-	"  module_path       TEXT NOT NULL, "\
-	"  base_addr         TEXT NOT NULL "\
-	"	)"
-
-#define INSERT_MODULE \
-	"INSERT INTO module (module_path, base_addr) VALUES ('%s', '%I64u') "
-
+#include "branch_log_data.h"
 
 
 /**
@@ -110,7 +54,7 @@ bool BranchLogger::intialize()
 	bool ret = false;
 	
 	//> 실행_파일_경로\20140225_121212.db 형태 DB 파일을 생성
-	if (true != generate_db_path(_path))
+	if (true != generate_db_path(_db_path))
 	{
 		log_err L"generate_db_path()" log_end
 		return false;
@@ -118,16 +62,16 @@ bool BranchLogger::intialize()
 
 	try
 	{
-		if (true == is_file_existsW(_path.c_str())) 
+		if (true == is_file_existsW(_db_path.c_str())) 
 		{
 			log_info 
 				L"existed db file deleted. db = %s", 
-				_path.c_str()
+				_db_path.c_str()
 			log_end
-			DeleteFileW(_path.c_str());
+			DeleteFileW(_db_path.c_str());
 		}
 
-		_db.open(WcsToMbsEx(_path.c_str()).c_str());		
+		_db.open(WcsToMbsEx(_db_path.c_str()).c_str());		
 		_db.execDML(CREATE_LBR_TABLE);
 		_db.execDML(CREATE_MODULE_TABLE);
 		

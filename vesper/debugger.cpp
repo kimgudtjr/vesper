@@ -434,6 +434,7 @@ Debugger::handle_single_step(
 		//> set rflags.tf and ia32_debug_contrl.btf
 		if (true != _vesper_support.enable_btf())
 		{
+#pragma TODO("호출이 실패한 경우 디버거를 종료해야 함")
 			log_err L"_vesper_support.enable_btf()" log_end
 			ret = DBG_CONTINUE;		
 		}
@@ -449,7 +450,6 @@ Debugger::handle_single_step(
 			ret = DBG_EXCEPTION_NOT_HANDLED;
 			break;
 		}
-
 		
 	}
 

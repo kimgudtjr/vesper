@@ -94,6 +94,7 @@
 /I "c:\Boost_x86\include\boost-1_55"
 /I "..\distorm3\include"
 /I "dbghelp\inc"
+/I "symbol_engine"
 /I "sqlite3"
  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -119,7 +120,8 @@ d:\work.git\_slogger\build\x86_debug\slogger.lib %(AdditionalOptions)</Additiona
 /I "d:\work.git\_slogger\trunk"
 /I "c:\Boost_x64\include\boost-1_55"
 /I "..\distorm3\include"
-/I ".\dbghelp\inc"
+/I "dbghelp\inc"
+/I "symbol_engine"
 /I ".\sqlite3" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -146,6 +148,7 @@ d:\work.git\_slogger\build\x64_debug\slogger.lib %(AdditionalOptions)</Additiona
 /I "c:\Boost_x86\include\boost-1_55"
 /I "..\distorm3\include"
 /I "dbghelp\inc"
+/I "symbol_engine"
 /I "sqlite3"
  %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -173,7 +176,8 @@ d:\work.git\_slogger\build\x86_release\slogger.lib %(AdditionalOptions)</Additio
 /I "d:\work.git\_slogger\trunk"
 /I "c:\Boost_x64\include\boost-1_55"
 /I "..\distorm3\include"
-/I ".\dbghelp\inc"
+/I "dbghelp\inc"
+/I "symbol_engine"
 /I ".\sqlite3" %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
@@ -196,6 +200,7 @@ d:\work.git\_slogger\build\x64_release\slogger.lib %(AdditionalOptions)</Additio
     <ClInclude Include="..\distorm3\include\mnemonics.h" />
     <ClInclude Include="analyzer.h" />
     <ClInclude Include="branch_log.h" />
+    <ClInclude Include="branch_log_data.h" />
     <ClInclude Include="breakpoint.h" />
     <ClInclude Include="cpu_helper.h" />
     <ClInclude Include="debugger.h" />
@@ -235,7 +240,12 @@ d:\work.git\_slogger\build\x64_release\slogger.lib %(AdditionalOptions)</Additio
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="symbol_engine\SymbolEngine.cpp" />
+    <ClCompile Include="symbol_engine\SymbolEngine.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">NotUsing</PrecompiledHeader>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="symbol_engine\readme.txt" />

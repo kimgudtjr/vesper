@@ -29,8 +29,8 @@
 
 
 
-#define		_driver_name			"vesper"
-#define		_driver_name_u			L"vesper"
+#define		_driver_name			"vesperk"
+#define		_driver_name_u			L"vesperk"
 
 #define		_nt_device_name			L"\\Device\\"_driver_name_u
 #define		_dos_device_name		L"\\DosDevices\\"_driver_name_u

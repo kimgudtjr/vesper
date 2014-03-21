@@ -10,6 +10,7 @@
 #pragma once
 
 #include "scm_context.h"
+#include "..\share\fc_drv_share.h"
 
 
 #include <WinIoCtl.h>
@@ -18,10 +19,9 @@
 #define _io_test			_fc_iocode(0x0801, METHOD_BUFFERED, FILE_ANY_ACCESS)
 
 
-#define VESPER_SYS_NAME		L"vesper.sys"
-#define VESPER_SVC_NAME		L"vesper"
-#define VESPER_SVC_DISPLAY	L"vesper ring0 supporter"
-
+/**
+ * @brief	
+**/
 class vesper_support
 {
 public:
@@ -49,7 +49,7 @@ public:
 			log_err L"get_current_module_dir()" log_end
 			return false;
 		}
-		std::wstring vesper_sys = current_dir + L"\\" + VESPER_SYS_NAME;
+		std::wstring vesper_sys = current_dir + L"\\" + _driver_name_u + L".sys";
 		
 		if (true != is_file_existsW(vesper_sys.c_str()))
 		{
@@ -57,7 +57,7 @@ public:
 			return false;
 		}
 		
-		_scm = new scm_context(vesper_sys.c_str(), VESPER_SVC_NAME, VESPER_SVC_DISPLAY, true);
+		_scm = new scm_context(vesper_sys.c_str(), _service_name, _service_name_display, true);
 		if (true != _scm->install_driver())
 		{
 			log_err L"_scm->install_driver()" log_end		

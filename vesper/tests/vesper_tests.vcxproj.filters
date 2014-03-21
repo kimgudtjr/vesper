@@ -19,6 +19,9 @@
     <ClCompile Include="..\analyzer.cpp">
       <Filter>vesper</Filter>
     </ClCompile>
+    <ClCompile Include="..\symbol_engine\SymbolEngine.cpp">
+      <Filter>vesper\symbol_engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h" />
@@ -40,6 +43,9 @@
     <ClInclude Include="..\analyzer.h">
       <Filter>vesper</Filter>
     </ClInclude>
+    <ClInclude Include="..\symbol_engine\SymbolEngine.h">
+      <Filter>vesper\symbol_engine</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="_MyLib">
@@ -51,5 +57,13 @@
     <Filter Include="vesper\sqlite3">
       <UniqueIdentifier>{e7c54c58-f62a-4ff7-a64d-fe0b88d9c707}</UniqueIdentifier>
     </Filter>
+    <Filter Include="vesper\symbol_engine">
+      <UniqueIdentifier>{20896099-45a9-4827-aa83-19f1bcb11af1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\symbol_engine\readme.txt">
+      <Filter>vesper\symbol_engine</Filter>
+    </None>
   </ItemGroup>
 </Project>

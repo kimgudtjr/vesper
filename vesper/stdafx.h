@@ -30,8 +30,7 @@
 
 #define CODE_BUFFER_SIZE	16
 
-
-
+//> for distrorm3
 #if defined(_AMD64_)
 	//> configure for distorm3
 	#define SUPPORT_64BIT_OFFSET
@@ -42,3 +41,8 @@
 #else
 	#error !!unsupported architecture!!
 #endif			
+
+
+//> for dbghelp 
+#define DBGHELP_TRANSLATE_TCHAR
+#include "dbghelp.h"
