@@ -34,6 +34,12 @@
     <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\Win32Utils.cpp">
       <Filter>sources</Filter>
     </ClCompile>
+    <ClCompile Include="symbol_engine\SymbolEngine.cpp">
+      <Filter>symbol_engine</Filter>
+    </ClCompile>
+    <ClCompile Include="analyzer.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -84,6 +90,12 @@
     <ClInclude Include="..\..\..\..\work.git\_slogger\Trunk\slogger.h">
       <Filter>headers</Filter>
     </ClInclude>
+    <ClInclude Include="symbol_engine\SymbolEngine.h">
+      <Filter>symbol_engine</Filter>
+    </ClInclude>
+    <ClInclude Include="analyzer.h">
+      <Filter>headers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="sources">
@@ -103,5 +115,13 @@
     <Filter Include="sqlite3">
       <UniqueIdentifier>{83aad20e-32af-478d-afe0-552f85fae782}</UniqueIdentifier>
     </Filter>
+    <Filter Include="symbol_engine">
+      <UniqueIdentifier>{e89900b8-f0db-4fb9-b341-f10af0d34a65}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="symbol_engine\readme.txt">
+      <Filter>symbol_engine</Filter>
+    </None>
   </ItemGroup>
 </Project>

@@ -194,6 +194,7 @@ d:\work.git\_slogger\build\x64_release\slogger.lib %(AdditionalOptions)</Additio
     <ClInclude Include="..\..\..\..\work.git\_slogger\Trunk\slogger.h" />
     <ClInclude Include="..\distorm3\include\distorm.h" />
     <ClInclude Include="..\distorm3\include\mnemonics.h" />
+    <ClInclude Include="analyzer.h" />
     <ClInclude Include="branch_log.h" />
     <ClInclude Include="breakpoint.h" />
     <ClInclude Include="cpu_helper.h" />
@@ -202,12 +203,14 @@ d:\work.git\_slogger\build\x64_release\slogger.lib %(AdditionalOptions)</Additio
     <ClInclude Include="sqlite3\CppSQLite3.h" />
     <ClInclude Include="sqlite3\sqlite3.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="symbol_engine\SymbolEngine.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="vesper_support.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\scm_context.cpp" />
     <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\Win32Utils.cpp" />
+    <ClCompile Include="analyzer.cpp" />
     <ClCompile Include="branch_log.cpp" />
     <ClCompile Include="breakpoint.cpp" />
     <ClCompile Include="cpu_helper.cpp" />
@@ -232,6 +235,10 @@ d:\work.git\_slogger\build\x64_release\slogger.lib %(AdditionalOptions)</Additio
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="symbol_engine\SymbolEngine.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="symbol_engine\readme.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

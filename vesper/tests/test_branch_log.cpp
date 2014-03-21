@@ -1,5 +1,5 @@
 ﻿/**----------------------------------------------------------------------------
- * _MyLib_test.cpp
+ * test_branch_log.cpp
  *-----------------------------------------------------------------------------
  * 
  *-----------------------------------------------------------------------------
@@ -8,49 +8,43 @@
  * 2014:1:25 13:34 created
 **---------------------------------------------------------------------------*/
 #include "stdafx.h"
+#include "gtest/gtest.h"			// google test
 
 #include "..\branch_log.h"
 
-static DWORD		_pass_count = 0;
-static DWORD		_fail_count = 0;
-
-
-bool test_BranchLogger();
 bool test_BranchLogger_log_exception_info(_In_ BranchLogger& bl);
 bool test_BranchLogger_log_module_load(_In_ BranchLogger& bl);
 
 /**
- * @brief	
- * @param	
- * @see		
- * @remarks	
- * @code		
- * @endcode	
- * @return	
+ * @brief	fixture / teardown 
 **/
-int _tmain(int argc, _TCHAR* argv[])
+class TestBranchLogger : public testing::Test 
 {
-	bool ret = false;
+protected:  // You should make the members protected s.t. they can be
+			// accessed from sub-classes.
 
-	_ASSERTE( true == slog_initialize(slog_debug, log_to_con, NULL) );
-	slog_set_log_format(true, false, true);
-	
-	test_BranchLogger();
+	// virtual void SetUp() will be called before each test is run.  You
+	// should define it if you need to initialize the varaibles.
+	// Otherwise, this can be skipped.
+	virtual void SetUp() 
+	{		
+		ASSERT_EQ(true, _bl.intialize());
+	}
 
-	log_info
-		L"-------------------------------------------------------------------------------"
-	log_end
-	log_info
-		L"total test = %u, pass = %u, fail = %u", 
-		_pass_count + _fail_count, 
-		_pass_count, 
-		_fail_count
-	log_end
+	// virtual void TearDown() will be called after each test is run.
+	// You should define it if there is cleanup work to do.  Otherwise,
+	// you don't have to provide it.
+	//
+	virtual void TearDown() 
+	{
+		_bl.finalize();
 
-	getchar();
+		::DeleteFileW(_bl.get_db_path());
+	}
 
-	return 0;
-}
+	// Declares the variables your tests want to use.
+	BranchLogger _bl;
+};
 
 /**
  * @brief	
@@ -61,18 +55,16 @@ int _tmain(int argc, _TCHAR* argv[])
  * @endcode	
  * @return	
 **/
-bool test_BranchLogger()
+TEST_F(TestBranchLogger, db_io_test)
 {
-	BranchLogger _bl;
-	if (true != _bl.intialize()) return false;
-
-	bool ret = false;
-	assert_bool_with_param(true, test_BranchLogger_log_exception_info, _bl);
-	assert_bool_with_param(true, test_BranchLogger_log_module_load, _bl);	
-	
-	_bl.finalize();
-	return ret;
+	ASSERT_EQ(true, test_BranchLogger_log_exception_info(_bl));
+	ASSERT_EQ(true, test_BranchLogger_log_module_load(_bl));
 }
+
+
+
+
+
 
 
 /**
@@ -138,10 +130,6 @@ bool test_BranchLogger_log_exception_info(_In_ BranchLogger& bl)
 	str = query.getStringField(4);
 	if (true != str_to_uint64(str.c_str(), r_int64)) return false;	
 	if ((UINT64)edi.ExceptionRecord.ExceptionAddress != r_int64) return false;
-
-
-
-
 
 
 

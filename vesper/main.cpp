@@ -9,9 +9,11 @@
 **---------------------------------------------------------------------------*/
 #include "stdafx.h"
 #include "Debugger.h"
+#include "analyzer.h"
 
 
 static Debugger _debugger;
+static analyzer	_analyzer;
 
 BOOL control_handler(_In_ DWORD control_type);
 
@@ -34,13 +36,19 @@ int _tmain(int argc, _TCHAR* argv[])
 	get_current_module_path(log_file);
 	log_file += L".log";
 		
-//	if (true != slog_initialize(slog_debug, log_to_file | log_to_con, log_file.c_str()))
+	//if (true != slog_initialize(slog_debug, log_to_file | log_to_con, log_file.c_str()))
 	if (true != slog_initialize(slog_debug, log_to_file, log_file.c_str()))
 	{
 		log_err L"slog_initialize( file = %s )", log_file.c_str() log_end
 		return -1;
 	}
 	slog_set_log_format(false, true, true);
+
+	//> parse command line
+	//> vesper.exe [-debug] [file_path] [db_path]
+	//> or
+	//> vesper.exe [-analyze] [db_path]
+	
 
 
 	do 

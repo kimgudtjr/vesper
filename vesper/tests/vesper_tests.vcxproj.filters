@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="stdafx.cpp" />
-    <ClCompile Include="vesper_tests.cpp" />
     <ClCompile Include="..\branch_log.cpp">
       <Filter>vesper</Filter>
     </ClCompile>
@@ -14,6 +13,11 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\_MyLib\trunk\Win32Utils.cpp">
       <Filter>_MyLib</Filter>
+    </ClCompile>
+    <ClCompile Include="test_branch_log.cpp" />
+    <ClCompile Include="test_analyzer.cpp" />
+    <ClCompile Include="..\analyzer.cpp">
+      <Filter>vesper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +36,9 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\_MyLib\trunk\Win32Utils.h">
       <Filter>_MyLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\analyzer.h">
+      <Filter>vesper</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

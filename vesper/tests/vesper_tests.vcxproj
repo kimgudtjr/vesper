@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\_MyLib\trunk\Win32Utils.cpp" />
+    <ClCompile Include="..\analyzer.cpp" />
     <ClCompile Include="..\branch_log.cpp" />
     <ClCompile Include="..\sqlite3\CppSQLite3.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
@@ -39,11 +40,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="vesper_tests.cpp" />
+    <ClCompile Include="test_analyzer.cpp" />
+    <ClCompile Include="test_branch_log.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\_MyLib\trunk\mini_test.h" />
     <ClInclude Include="..\..\..\..\_MyLib\trunk\Win32Utils.h" />
+    <ClInclude Include="..\analyzer.h" />
     <ClInclude Include="..\branch_log.h" />
     <ClInclude Include="..\sqlite3\CppSQLite3.h" />
     <ClInclude Include="..\sqlite3\sqlite3.h" />
@@ -121,6 +124,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/I "d:\work.git\_MyLib\trunk"
 /I "d:\work.git\_slogger\trunk"
+/I "d:\work.git\gtest\trunk\include"
 /I "c:\Boost_x86\include\boost-1_55"
 /I "..\..\distorm3\include"
 /I "..\dbghelp\inc"
@@ -133,6 +137,7 @@
       <AdditionalOptions>/LIBPATH:"c:\Boost_x86\lib"
 /LIBPATH:"..\..\distorm3\x86_dll" distorm3.lib
 /LIBPATH:".\dbghelp\lib\i386" dbghelp.lib
+/LIBPATH:"d:\work.git\gtest\build\x86_debug_md" gtestd.lib gtest_maind.lib
 d:\work.git\_slogger\build\x86_debug\slogger.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -145,6 +150,7 @@ d:\work.git\_slogger\build\x86_debug\slogger.lib %(AdditionalOptions)</Additiona
       <AdditionalOptions>/D "_AMD64_"
 /I "d:\work.git\_MyLib\trunk"
 /I "d:\work.git\_slogger\trunk"
+/I "d:\work.git\gtest\trunk\include"
 /I "c:\Boost_x64\include\boost-1_55"
 /I "..\..\distorm3\include"
 /I "..\dbghelp\inc"
@@ -157,6 +163,7 @@ d:\work.git\_slogger\build\x86_debug\slogger.lib %(AdditionalOptions)</Additiona
       <AdditionalOptions>/LIBPATH:"c:\Boost_x64\lib"
 /LIBPATH:"..\..\distorm3\x64_dll" distorm3.lib
 /LIBPATH:".\dbghelp\lib\amd64" dbghelp.lib
+/LIBPATH:"d:\work.git\gtest\build\x64_debug_md" gtestd.lib gtest_maind.lib
 d:\work.git\_slogger\build\x64_debug\slogger.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -170,6 +177,7 @@ d:\work.git\_slogger\build\x64_debug\slogger.lib %(AdditionalOptions)</Additiona
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/I "d:\work.git\_MyLib\trunk"
 /I "d:\work.git\_slogger\trunk"
+/I "d:\work.git\gtest\trunk\include"
 /I "c:\Boost_x86\include\boost-1_55"
 /I "..\..\distorm3\include"
 /I "..\dbghelp\inc"
@@ -184,6 +192,7 @@ d:\work.git\_slogger\build\x64_debug\slogger.lib %(AdditionalOptions)</Additiona
       <AdditionalOptions>/LIBPATH:"c:\Boost_x86\lib"
 /LIBPATH:"..\..\distorm3\x86_dll" distorm3.lib
 /LIBPATH:".\dbghelp\lib\i386" dbghelp.lib
+/LIBPATH:"d:\work.git\gtest\build\x86_release_md" gtest.lib gtest_main.lib
 d:\work.git\_slogger\build\x86_release\slogger.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
@@ -198,6 +207,7 @@ d:\work.git\_slogger\build\x86_release\slogger.lib %(AdditionalOptions)</Additio
       <AdditionalOptions>/D "_AMD64_"
 /I "d:\work.git\_MyLib\trunk"
 /I "d:\work.git\_slogger\trunk"
+/I "d:\work.git\gtest\trunk\include"
 /I "c:\Boost_x64\include\boost-1_55"
 /I "..\..\distorm3\include"
 /I "..\dbghelp\inc"
@@ -212,7 +222,8 @@ d:\work.git\_slogger\build\x86_release\slogger.lib %(AdditionalOptions)</Additio
       <AdditionalOptions>/LIBPATH:"c:\Boost_x64\lib"
 /LIBPATH:"..\..\distorm3\x64_dll" distorm3.lib
 /LIBPATH:".\dbghelp\lib\amd64" dbghelp.lib
-d:\work.git\_slogger\build\x64_release\slogger.lib %(AdditionalOptions)</AdditionalOptions>
+/LIBPATH:"d:\work.git\gtest\build\x64_release_md" gtest.lib gtest_main.lib
+d:\work.git\_slogger\build\x64_debug\slogger.lib %(AdditionalOptions)</AdditionalOptions>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
