@@ -80,13 +80,13 @@ Debugger::~Debugger()
  * @endcode	
  * @return	
 **/
-bool Debugger::initialize()
+bool Debugger::initialize(_In_ const wchar_t* db_path)
 {
 	_ASSERTE(true != _initialized);
 	if (true == _initialized) return false;
 
 	//> intialize database logger
-	if (true != _logger.intialize())
+	if (true != _logger.intialize(db_path))
 	{
 		log_err L"_logger.intialize()" log_end
 		return false;
@@ -531,6 +531,7 @@ Debugger::handle_create_thread(
 		ti.start_address
 	log_end
 	
+#pragma warning(disable:4127)
 	do 
 	{
 		//BreakPoint* bp = new OneShotBreakPoint();
@@ -549,6 +550,7 @@ Debugger::handle_create_thread(
 
 		_bp_list.push_back(bp);
 	} while (false);
+#pragma warning(default:4127)
 
 	return ret;
 }
@@ -676,12 +678,19 @@ Debugger::handle_load_dll(
 
 	DWORD ret = DBG_CONTINUE;
 	
-	DllInfo dll_info;			
-	if (true == dll_info.initialize(lddi))
+	DWORD module_size = 0;
+	if (true != get_module_size((DWORD_PTR)lddi->lpBaseOfDll, module_size))
+	{
+		log_err L"get_module_size()" log_end
+		return ret;
+	}
+
+	ModuleInfo dll_info;			
+	if (true == dll_info.initialize(lddi, module_size))
 	{
 		_dll_list.push_back(dll_info);
 	}	
-
+	
 	//log_info
 	//	L"load dll, pid = %u, tid = %u, file handle = 0x%p, base = 0x%p, unicode = %s, name = %s",
 	//	pid, 
@@ -693,7 +702,11 @@ Debugger::handle_load_dll(
 	//log_end
 
 #pragma TODO("서로다른 모듈이 같은 주소에 load / unload 를 반복하는 경우 어떻하지?")
-	_logger.log_module_load(dll_info.image_name, dll_info.dll_base_address);
+	_logger.log_module_load(
+				dll_info.get_image_name(), 
+				dll_info.get_base_addr(), 
+				module_size
+				);
 	
 	return ret;
 }
@@ -719,11 +732,11 @@ Debugger::handle_unload_dll(
 
 	DWORD ret = DBG_CONTINUE;
 
-	std::list<DllInfo>::iterator is = _dll_list.begin();
-	std::list<DllInfo>::iterator ie = _dll_list.end();
+	std::list<ModuleInfo>::iterator is = _dll_list.begin();
+	std::list<ModuleInfo>::iterator ie = _dll_list.end();
 	for(; is != ie; ++is)
 	{
-		if (is->dll_base_address == (DWORD_PTR)uddi->lpBaseOfDll)
+		if (is->get_base_addr() == (DWORD_PTR)uddi->lpBaseOfDll)
 		{
 			//log_info
 			//	L"uload dll, pid = %u, tid = %u, name = %s", 
@@ -974,5 +987,57 @@ bool Debugger::disas(_In_ UINT_PTR base_address, _In_ UINT_PTR delta, _In_ UINT3
 	}
 	*/
 	return true;
+}
 
+/**
+ * @brief	get module's size  (Author: Oleg Starodumov (www.debuginfo.com))
+ * @param	
+ * @see		
+ * @remarks	
+ * @code		
+ * @endcode	
+ * @return	
+**/
+bool Debugger::get_module_size(_In_ DWORD_PTR module_base, _Out_ DWORD module_size)
+{
+	_ASSERTE(0 != module_base);
+	if(module_base == 0) { return false; }
+
+	// Scan the address space of the process and determine where the memory region 
+	// allocated for the module ends (that is, we are looking for the first range 
+	// of pages whose AllocationBase is not the same as the load address of the module)
+	bool found = false;
+
+	MEMORY_BASIC_INFORMATION mbi = {0};
+
+	BYTE* query_addr = (BYTE*) module_base;
+
+	while(true != found)
+	{		
+		if(sizeof(mbi) != VirtualQueryEx( 
+							_process_info.cpdi.hProcess, 
+							query_addr, 
+							&mbi, 
+							sizeof(mbi)))
+		{
+			log_err 
+				L"VirtualQueryEx( addr = %u64x ), gle = %u", 
+				query_addr, 
+				GetLastError() 
+			log_end
+			break;
+		}
+
+		if((DWORD_PTR)mbi.AllocationBase != module_base )
+		{
+			// Found, calculate the module size
+			module_size = (DWORD)(query_addr - (BYTE*)module_base);
+			found = true;
+			break;
+		}
+
+		query_addr += mbi.RegionSize;
+	}
+
+	return found;
 }

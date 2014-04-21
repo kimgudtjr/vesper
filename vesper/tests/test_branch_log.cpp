@@ -28,7 +28,10 @@ protected:  // You should make the members protected s.t. they can be
 	// Otherwise, this can be skipped.
 	virtual void SetUp() 
 	{		
-		ASSERT_EQ(true, _bl.intialize());
+		std::wstring tmp;
+		ASSERT_EQ(true, get_current_module_dir(tmp));
+		tmp += L"\\test_debug_db.db3";
+		ASSERT_EQ(true, _bl.intialize(tmp.c_str()));
 	}
 
 	// virtual void TearDown() will be called after each test is run.
@@ -152,7 +155,14 @@ bool test_BranchLogger_log_exception_info(_In_ BranchLogger& bl)
 bool test_BranchLogger_log_module_load(_In_ BranchLogger& bl)
 {
 	std::wstring module_path(L"c:\\windows\\system32\\kernel32.dll");
-	if (true != bl.log_module_load(module_path, 0xffffffff7c809090)) return false;
+
+	HANDLE file = open_file_to_read(module_path.c_str());
+	if (INVALID_HANDLE_VALUE == file) return false;
+
+	LARGE_INTEGER size={0};
+	if (true != get_file_size(file, size)) return false;
+
+	if (true != bl.log_module_load(module_path.c_str(), 0xffffffff7c809090, size.LowPart)) return false;
 
 	//> 검증
 	INT64 id = bl.get_last_row_id();
@@ -172,7 +182,7 @@ bool test_BranchLogger_log_module_load(_In_ BranchLogger& bl)
 	if (0xffffffff7c809090 != r_addr) return false;
 	
 	module_path = L"";
-	if (true == bl.log_module_load(module_path, 0xffffffff7c809090)) return false;
+	if (true == bl.log_module_load(module_path.c_str(), 0xffffffff7c809090, size.LowPart)) return false;
 
 	return true;
 }

@@ -40,6 +40,9 @@
     <ClCompile Include="..\..\..\..\work.git\_MyLib\Trunk\Win32Utils.cpp">
       <Filter>_MyLib</Filter>
     </ClCompile>
+    <ClCompile Include="module_info.cpp">
+      <Filter>sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -97,6 +100,12 @@
       <Filter>_MyLib</Filter>
     </ClInclude>
     <ClInclude Include="branch_log_data.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="module_info.h">
+      <Filter>headers</Filter>
+    </ClInclude>
+    <ClInclude Include="process_thread_info.h">
       <Filter>headers</Filter>
     </ClInclude>
   </ItemGroup>

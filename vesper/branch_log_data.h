@@ -60,14 +60,15 @@
 
 #define CREATE_MODULE_TABLE \
 	"create table module ( "\
-	"  idx               INTEGER PRIMARY KEY AUTOINCREMENT, "\
-	"  module_path       TEXT NOT NULL, "\
-	"  base_addr         TEXT NOT NULL "\
+	"  idx			INTEGER PRIMARY KEY AUTOINCREMENT, "\
+	"  path			TEXT NOT NULL, "\
+	"  base_addr    TEXT NOT NULL, "\
+	"  size         INTEGER NOT NULL "\
 	"	)"
 
 #define INSERT_MODULE \
-	"INSERT INTO module (module_path, base_addr) VALUES ('%s', '%I64u') "
+	"INSERT INTO module (path, base_addr, size) VALUES ('%s', '%I64u', '%u') "
 
 #define SELECT_MODULE \
-	"SELECT module_path, base_addr FROM module ORDER BY idx"
+	"SELECT path, base_addr, size FROM module ORDER BY idx"
 

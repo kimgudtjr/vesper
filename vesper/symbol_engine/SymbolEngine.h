@@ -140,7 +140,7 @@ public:
 	// Return value: Non-zero base address of the module if succeeded, zero if failed. 
 	// If the function failed, LastError() function can be used to obtain the last error code.
 	// 
-	DWORD64 LoadModuleSymbols( const TString& ImageName, DWORD64 ModBase = 0, DWORD ModSize = 0 );
+	bool LoadModuleSymbols( const TString& ImageName, DWORD64 ModBase = 0, DWORD ModSize = 0 );
 
 	// LoadModuleSymbols()
 	// 
@@ -155,7 +155,7 @@ public:
 	// Return value: Non-zero base address of the module if succeeded, zero if failed. 
 	// If the function failed, LastError() function can be used to obtain the last error code.
 	// 
-	DWORD64 LoadModuleSymbols( HANDLE hFile, DWORD64 ModBase = 0, DWORD ModSize = 0 );
+	bool LoadModuleSymbols( HANDLE hFile, DWORD64 ModBase = 0, DWORD ModSize = 0 );
 
 	// LoadModuleSymbols()
 	// 
@@ -171,7 +171,7 @@ public:
 	// Return value: Non-zero base address of the module if succeeded, zero if failed. 
 	// If the function failed, LastError() function can be used to obtain the last error code.
 	// 
-	DWORD64 LoadModuleSymbols( HANDLE hFile, const TString& ImageName, DWORD64 ModBase = 0, DWORD ModSize = 0 );
+	bool LoadModuleSymbols( HANDLE hFile, const TString& ImageName, DWORD64 ModBase = 0, DWORD ModSize = 0 );
 
 	// UnloadModuleSymbols()
 	// 

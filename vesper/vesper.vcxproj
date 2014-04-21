@@ -205,11 +205,13 @@ d:\work.git\_slogger\build\x64_release\slogger.lib %(AdditionalOptions)</Additio
     <ClInclude Include="cpu_helper.h" />
     <ClInclude Include="debugger.h" />
     <ClInclude Include="debug_core.h" />
+    <ClInclude Include="module_info.h" />
     <ClInclude Include="sqlite3\CppSQLite3.h" />
     <ClInclude Include="sqlite3\sqlite3.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="symbol_engine\SymbolEngine.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="process_thread_info.h" />
     <ClInclude Include="vesper_support.h" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +224,7 @@ d:\work.git\_slogger\build\x64_release\slogger.lib %(AdditionalOptions)</Additio
     <ClCompile Include="debugger.cpp" />
     <ClCompile Include="debug_core.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="module_info.cpp" />
     <ClCompile Include="sqlite3\CppSQLite3.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">NotUsing</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>

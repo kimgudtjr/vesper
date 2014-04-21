@@ -11,7 +11,7 @@
 
 #include "CppSQLite3.h"
 #include "SymbolEngine.h"
-
+#include "module_info.h"
 
 /**
  * @brief	ms symbol wrapper
@@ -45,16 +45,24 @@ public:
 	bool	initialize(_In_ const wchar_t* db_path);
 	void	finalize();
 
-	bool	load_module_symbols();
-
+	bool	start_analyzer();
 private:
 	bool	is_database_valid();
-
+	bool	load_module_symbols();
+	bool	load_module_symbol(_In_ std::wstring& module_path, _In_ DWORD_PTR base_addr, _In_ DWORD module_size);
+	
 private:
 	bool			_initialized;
 	std::wstring	_db_path;
 	CppSQLite3DB	_db;
 	CSymbolEngineEx	_symbol;
 
+	std::map<DWORD_PTR, ModuleInfo>	_modules;
+
+#ifdef _test_define_
+	
+
+	friend class TestAnalyzer_load_module_symbols_Test;
+#endif
 };
 

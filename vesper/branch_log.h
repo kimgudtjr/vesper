@@ -17,7 +17,7 @@ public:
 	BranchLogger();
 	~BranchLogger();
 
-	bool	intialize();
+	bool	intialize(_In_ const wchar_t* db_path);
 	void	finalize();
 	
 	bool	log_exception_info(				
@@ -26,7 +26,7 @@ public:
 				_In_ UINT32	code_size,
 				_In_ const UINT8* code
 				);
-	bool	log_module_load(_In_ std::wstring& module_path, _In_ UINT_PTR base_addr);
+	bool	log_module_load(_In_ const wchar_t* module_path, _In_ UINT_PTR base_addr, _In_ DWORD module_size);
 	INT64	get_last_row_id();
 
 	const wchar_t* get_db_path() { return _db_path.c_str(); }
@@ -36,7 +36,8 @@ private:
 	CppSQLite3DB	_db;
 	
 
-	bool	generate_db_path(_Out_ std::wstring& dbpath);	
+	// refac
+	//bool	generate_db_path(_Out_ std::wstring& dbpath);	
 
 
 #ifdef _test_define_

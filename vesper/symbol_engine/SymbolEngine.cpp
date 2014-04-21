@@ -163,7 +163,7 @@ void CSymbolEngine::Close()
 // CSymbolEngine - module operations
 //
 
-DWORD64 
+bool
 CSymbolEngine::LoadModuleSymbols( 
 	HANDLE hFile, 
 	const TString& ImageName, 
@@ -177,7 +177,7 @@ CSymbolEngine::LoadModuleSymbols(
 	{
 		_ASSERTE( !_T("Symbol engine is not yet initialized.") );
 		m_LastError = ERROR_INVALID_FUNCTION;
-		return 0;
+		return false;
 	}
 
 
@@ -204,23 +204,23 @@ CSymbolEngine::LoadModuleSymbols(
 
 
 	// Load symbols for the module
-
+#pragma TODO("replace SymLoadModule64 with SymLoadModuleEx ")
 	DWORD64 rv = SymLoadModule64( m_hProcess, hFile, pImageName, NULL, ModBase, ModSize );
 
 	if( rv == 0 )
 	{
 		m_LastError = GetLastError();
 		_ASSERTE( !_T("SymLoadModule64() failed.") );
-		return 0;
+		return false;
 	}
 
 
 	// Complete 
 
-	return rv;
+	return true;
 }
 
-DWORD64 
+bool
 CSymbolEngine::LoadModuleSymbols( 
 	const TString& ImageName, 
 	DWORD64 ModBase, 
@@ -241,7 +241,7 @@ CSymbolEngine::LoadModuleSymbols(
 	return LoadModuleSymbols( NULL, ImageName, ModBase, ModSize );
 }
 
-DWORD64 
+bool
 CSymbolEngine::LoadModuleSymbols( 
 	HANDLE hFile, 
 	DWORD64 ModBase, 
