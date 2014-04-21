@@ -1,4 +1,4 @@
 vesper
 ======
 
-another windows debugger
+another fast branch tracer that uses h/w facility.
